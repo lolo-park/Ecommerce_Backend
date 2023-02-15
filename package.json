@@ -1,0 +1,32 @@
+{
+	"name": "ecommerce_backend",
+	"version": "1.0.0",
+	"description": "Ecommerce_backend",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lolo-park/Ecommerce_Backend.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/lolo-park/Ecommerce_Backend/issues"
+	},
+	"homepage": "https://github.com/lolo-park/Ecommerce_Backend#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"mysql2": "^3.1.2",
+		"typeorm": "^0.3.12"
+	},
+	"devDependencies": {
+		"morgan": "^1.10.0",
+		"nodemon": "^2.0.20"
+	}
+}
