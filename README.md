@@ -4,4 +4,4 @@ E-commerce 서비스 서버 개발에 필요한 기본적인 CRUD 기능을 Rest
 
 # Tech 
 
-JavaScript Node.js MySQL
+JavaScript | Node.js | MySQL
