@@ -12,7 +12,19 @@ const getProductByCategoryId = async (categoryId) => {
 	);
 };
 
-module.exports = { getProductByCategoryId };
+const getProductByProductName = async (productName) => {
+	return await loloDatabase.query(
+		`
+      SELECT 
+      p.id,
+      p.name
+      FROM products p 
+      WHERE p.name LIKE ?`,
+		["%" + productName + "%"]
+	);
+};
+
+module.exports = { getProductByCategoryId, getProductByProductName };
 
 /*
 

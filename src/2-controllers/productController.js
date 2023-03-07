@@ -8,8 +8,19 @@ const getProductByCategoryId = async (req, res) => {
 
 		return res.status(200).json({ result });
 	} catch (err) {
-		throw new Error("productService Error");
+		throw new Error("productService Error - getProductByCategoryId");
 	}
 };
 
-module.exports = { getProductByCategoryId };
+const getProductByProductName = async (req, res) => {
+	try {
+		const productName = req.query.productName;
+
+		const result = await productService.getProductByProductName(productName);
+		return res.status(200).json({ result });
+	} catch (err) {
+		throw new Error("product Service Error - getProductByProductName");
+	}
+};
+
+module.exports = { getProductByCategoryId, getProductByProductName };
