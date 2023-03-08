@@ -3,36 +3,27 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const routes = express.Router();
 
-const { DataSource } = require("typeorm");
-
-const myDatabase = new DataSource({
-	type: process.env.DB_TYPE,
-	host: process.env.DB_HOST,
-	port: process.env.DB_PORT,
-	username: process.env.DB_USERNAME,
-	password: process.env.DB_PASSWORD,
-	database: process.env.DB_NAME,
-});
+const { loloDatabase } = require("./src/4-models/data-source");
+const { router } = require("./src/1-routers");
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 app.use(morgan("combined"));
-app.use(routes);
+app.use(router);
 
 app.get("/ping", function (req, res, next) {
 	res.json({ message: "pong!" });
 });
 
-myDatabase
+loloDatabase
 	.initialize()
 	.then(() => {
 		console.log(" 🐳 서버 돌아가는 중 🐳 ");
 	})
-	.catch(err => {
+	.catch((err) => {
 		console.log(" ❌ 서버돌리는데 에러 ❌ ", error);
 	});
 
