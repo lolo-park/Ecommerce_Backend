@@ -1,5 +1,17 @@
 const { loloDatabase } = require("./data-source");
 
+const getAllProducts = async (allProducts) => {
+	return await loloDatabase.query(
+		`
+    SELECT 
+      p.id,
+      p.name
+    FROM products p 
+    `,
+		[allProducts]
+	);
+};
+
 const getProductByCategoryId = async (categoryId) => {
 	return await loloDatabase.query(
 		`
@@ -24,7 +36,11 @@ const getProductByProductName = async (productName) => {
 	);
 };
 
-module.exports = { getProductByCategoryId, getProductByProductName };
+module.exports = {
+	getAllProducts,
+	getProductByCategoryId,
+	getProductByProductName,
+};
 
 /*
 

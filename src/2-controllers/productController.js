@@ -1,5 +1,17 @@
 const productService = require("../3-services/productService");
 
+const getAllProducts = async (req, res) => {
+	try {
+		const allProducts = req.params;
+
+		const result = await productService.getAllProducts(allProducts);
+
+		return res.status(200).json({ result });
+	} catch (err) {
+		throw new Error("prductController error - getAllProducts");
+	}
+};
+
 const getProductByCategoryId = async (req, res) => {
 	try {
 		const categoryId = req.params.categoryId;
@@ -8,7 +20,7 @@ const getProductByCategoryId = async (req, res) => {
 
 		return res.status(200).json({ result });
 	} catch (err) {
-		throw new Error("productService Error - getProductByCategoryId");
+		throw new Error("productController Error - getProductByCategoryId");
 	}
 };
 
@@ -17,10 +29,15 @@ const getProductByProductName = async (req, res) => {
 		const productName = req.query.productName;
 
 		const result = await productService.getProductByProductName(productName);
+		//console.log(result); ==> [ { id: 3, name: '신발3' } ]
 		return res.status(200).json({ result });
 	} catch (err) {
-		throw new Error("product Service Error - getProductByProductName");
+		throw new Error("productController Error - getProductByProductName");
 	}
 };
 
-module.exports = { getProductByCategoryId, getProductByProductName };
+module.exports = {
+	getAllProducts,
+	getProductByCategoryId,
+	getProductByProductName,
+};

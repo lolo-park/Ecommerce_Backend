@@ -1,5 +1,9 @@
 const productDao = require("../4-models/productDao");
 
+const getAllProducts = async (allProducts) => {
+	return await productDao.getAllProducts(allProducts);
+};
+
 const getProductByCategoryId = async (categoryId) => {
 	return await productDao.getProductByCategoryId(categoryId);
 };
@@ -8,7 +12,11 @@ const getProductByProductName = async (productName) => {
 	return await productDao.getProductByProductName(productName);
 };
 
-module.exports = { getProductByCategoryId, getProductByProductName };
+module.exports = {
+	getAllProducts,
+	getProductByCategoryId,
+	getProductByProductName,
+};
 
 /*
 service단에서는 무엇을 구현해야할까
